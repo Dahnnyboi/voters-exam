@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "name": "ATIENZA, LITO (PROMDI)",
+      "vote_count": 57,
+      "party": "ABAG PROMDI|ABAG PROMDI"
+    },
+    {
+      "name": "ONG, DOC WILLIE (AKSYON)",
+      "vote_count": 285,
+      "party": "AKSYON DEMOKRATIKO|AKSYON"
+    },
+    {
+      "name": "DAVID, RIZALITO (DPP)",
+      "vote_count": 17,
+      "party": "DEMOCRATIC PARTY OF THE PHILIPPINES|DPP"
+    },
+    {
+      "name": "SERAPIO, CARLOS (KTPNAN)",
+      "vote_count": 42,
+      "party": "KATIPUNAN NG KAMALAYANG  KAYUMANGGI|KATIPUNAN"
+    },
+    {
+      "name": "DUTERTE, SARA (LAKAS)",
+      "vote_count": 49359,
+      "party": "LAKAS CHRISTIAN  MUSLIM DEMOCRATS|LAKAS CMD"
+    },
+    {
+      "name": "PANGILINAN, KIKO (LP)",
+      "vote_count": 1823,
+      "party": "LIBERAL PARTY|LP"
+    },
+    {
+      "name": "SOTTO, VICENTE TITO (NPC)",
+      "vote_count": 682,
+      "party": "NATIONALIST PEOPLE'S COALITION|NPC"
+    },
+    {
+      "name": "BELLO, WALDEN (PLM)",
+      "vote_count": 52,
+      "party": "PARTIDO LAKAS NG MASA|PLM"
+    },
+    {
+      "name": "LOPEZ, MANNY SD (WPP)",
+      "vote_count": 41,
+      "party": "WORKERS AND PEASANTS PARTY|WPP"
+    }
+  ]
+}

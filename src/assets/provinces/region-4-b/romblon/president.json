@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "name": "PACQUIAO, MANNY PACMAN(PROMDI)",
+      "vote_count": 12445,
+      "party": "ABAG PROMDI|ABAG PROMDI"
+    },
+    {
+      "name": "DOMAGOSO, ISKO MORENO (AKSYON)",
+      "vote_count": 10895,
+      "party": "AKSYON DEMOKRATIKO|AKSYON"
+    },
+    {
+      "name": "MONTEMAYOR, JOSE JR. (DPP)",
+      "vote_count": 347,
+      "party": "DEMOCRATIC PARTY OF THE PHILIPPINES|DPP"
+    },
+    {
+      "name": "MANGONDATO, FAISAL (KTPNAN)",
+      "vote_count": 109,
+      "party": "KATIPUNAN NG KAMALAYANG  KAYUMANGGI|KATIPUNAN"
+    },
+    {
+      "name": "GONZALES, NORBERTO (PDSP)",
+      "vote_count": 256,
+      "party": "PARTIDO DEMOKRATIKO SOSYALISTA NG PILIPINAS|PDSP"
+    },
+    {
+      "name": "DE GUZMAN, LEODY (PLM)",
+      "vote_count": 274,
+      "party": "PARTIDO LAKAS NG MASA|PLM"
+    },
+    {
+      "name": "LACSON, PING (PDR)",
+      "vote_count": 5511,
+      "party": "PARTIDO PARA SA DEMOKRATIKONG  REPORMA|PDR"
+    },
+    {
+      "name": "ROBREDO, LENI (IND)",
+      "vote_count": 65142,
+      "party": "INDEPENDENT|IND"
+    },
+    {
+      "name": "ABELLA, ERNIE (IND)",
+      "vote_count": 374,
+      "party": "INDEPENDENT|IND"
+    },
+    {
+      "name": "MARCOS, BONGBONG (PFP)",
+      "vote_count": 71127,
+      "party": "PARTIDO FEDERAL NG PILIPINAS|PFP"
+    }
+  ]
+}
