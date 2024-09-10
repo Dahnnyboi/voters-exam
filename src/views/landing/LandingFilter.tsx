@@ -7,26 +7,40 @@ import {
   ISLAND_REGIONS,
   REVERSE,
   REGIONS_PROVINCES,
+  VOTE_TYPE,
+  PROVINCES_MUNICIPALITIES,
 } from '@constants/variables';
 
 interface LandingFilterProps {
   filters: {
     reverse: string | undefined;
     island: ISLANDS | undefined;
-    regions: REGIONS | undefined;
-    provinces: string | undefined;
-    municipality: string | undefined;
+    region: REGIONS | undefined;
+    province: PROVINCES | undefined;
+    municipality: MUNICIPALITIES | undefined;
   };
-  onChangeFilter: (name: string, value: string | null) => void;
+  onChangeFilter: (
+    name: string,
+    value: string | null,
+    array?: string[]
+  ) => void;
 }
 
 const LandingFilter = (props: LandingFilterProps) => {
   const { filters, onChangeFilter } = props;
 
-  const { reverse, island, regions, provinces } = filters;
+  const { reverse, island, region, province, municipality } = filters;
 
   return (
     <Row className="mb-3">
+      <Col>
+        <Select
+          options={createSelectOptions(VOTE_TYPE)}
+          onChange={(value) => onChangeFilter('vote_type', value)}
+          placeholder="Select type"
+          defaultValue={reverse}
+        />
+      </Col>
       <Col>
         <Select
           options={createSelectOptions(REVERSE)}
@@ -38,7 +52,13 @@ const LandingFilter = (props: LandingFilterProps) => {
       <Col>
         <Select
           options={createSelectOptions(ISLAND_GROUP)}
-          onChange={(value) => onChangeFilter('island', value)}
+          onChange={(value) => {
+            onChangeFilter('island', value, [
+              'region',
+              'province',
+              'municipality',
+            ]);
+          }}
           placeholder="Select Island Group"
           defaultValue={island}
         />
@@ -46,21 +66,34 @@ const LandingFilter = (props: LandingFilterProps) => {
       <Col>
         <Select
           options={createSelectOptions(island ? ISLAND_REGIONS[island] : {})}
-          onChange={(value) => onChangeFilter('regions', value)}
+          onChange={(value) => {
+            onChangeFilter('region', value, ['province', 'municipality']);
+          }}
           placeholder="Select Region"
-          defaultValue={regions}
+          defaultValue={region}
           disabled={!island}
         />
       </Col>
       <Col>
         <Select
-          options={createSelectOptions(
-            regions ? REGIONS_PROVINCES[regions] : {}
-          )}
-          onChange={(value) => onChangeFilter('provinces', value)}
+          options={createSelectOptions(region ? REGIONS_PROVINCES[region] : {})}
+          onChange={(value) => {
+            onChangeFilter('province', value, ['muncipality']);
+          }}
           placeholder="Select Provinces"
-          defaultValue={provinces}
-          disabled={!provinces}
+          defaultValue={province}
+          disabled={!region}
+        />
+      </Col>
+      <Col>
+        <Select
+          options={createSelectOptions(
+            province ? PROVINCES_MUNICIPALITIES[province] : {}
+          )}
+          onChange={(value) => onChangeFilter('municipality', value)}
+          placeholder="Select Municipality"
+          defaultValue={municipality}
+          disabled={!province}
         />
       </Col>
     </Row>

@@ -26,9 +26,10 @@
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
       "@constants/*": ["src/constants/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@mock-apis/*": ["src/mock-apis/*"]
     },
-    "types": ["./src/types/*"]
+    "typeRoots": ["src/**.d.ts"]
   },
   "include": ["src", "src/**/*.ts"]
 }
