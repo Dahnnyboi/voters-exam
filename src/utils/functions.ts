@@ -1,45 +1,73 @@
-interface SortableObject {
-  [key: string]: any; // Allows for dynamic property names
-}
+export const convertJsonToData = async <T>(
+  importFunction: () => Promise<{ data: T }>
+) => {
+  const { data } = await importFunction();
 
-export const sortObjectByKey = (
-  arr: SortableObject[],
-  key: string
-): SortableObject[] => {
-  return arr.slice().sort((a, b) => b[key] - a[key]);
+  return data;
 };
 
-export const reverseObjectByKey = (arr: SortableObject[], key: string) => {
-  return arr.map((a) => {
-    let value = a[key];
+export const sortObjectByKey = <T extends Record<string, any>>(
+  arr: T[],
+  key: keyof T
+): T[] => {
+  return arr.slice().sort((a, b) => {
+    const aValue = a[key];
+    const bValue = b[key];
 
-    const isNumber = typeof value === 'number';
+    if (typeof aValue === 'number' && typeof bValue === 'number') {
+      return bValue - aValue; // Numeric comparison
+    }
 
-    // type checkings
-    if (isNumber) value = value.toString();
-    if (typeof value !== 'string' || !a[key]) return { ...a, [key]: a[key] };
+    if (typeof aValue === 'string' && typeof bValue === 'string') {
+      return bValue.localeCompare(aValue); // String comparison
+    }
 
-    const splits = value.split(' ');
-    let results = '';
+    return 0; // If not comparable, keep original order
+  });
+};
 
-    splits.forEach((split) => {
-      const length = split.length;
-      const isEven = length % 2 === 0;
+export const reverseObjectValue = <T extends Record<string, any>>(
+  arr: T[]
+): T[] => {
+  return arr.map((obj) => {
+    const updatedObj = { ...obj };
 
-      const middleIndex = isEven ? length / 2 : Math.ceil(length / 2);
+    (Object.keys(updatedObj) as (keyof T)[]).forEach((key) => {
+      let value = updatedObj[key];
 
-      let firstHalf = split.slice(0, middleIndex);
-      let secondHalf = split.slice(middleIndex, length);
+      if (typeof value === 'number') {
+        value = value.toString(); // Convert number to string for reversal
+      }
 
-      firstHalf = firstHalf.split('').reverse().join('');
-      secondHalf = secondHalf.split('').reverse().join('');
+      if (typeof value === 'string') {
+        const reversedValue = value
+          .split(' ')
+          .map((word: string) => {
+            const length = word.length;
+            const middleIndex = Math.ceil(length / 2);
 
-      let result: string = firstHalf.concat(secondHalf);
+            const firstHalf = word
+              .slice(0, middleIndex)
+              .split('')
+              .reverse()
+              .join('');
+            const secondHalf = word
+              .slice(middleIndex)
+              .split('')
+              .reverse()
+              .join('');
 
-      results = results.concat(result, ' ');
+            return firstHalf.concat(secondHalf);
+          })
+          .join(' ');
+
+        updatedObj[key] = isNaN(Number(reversedValue))
+          ? reversedValue
+          : Number(reversedValue);
+      }
     });
 
-    return { ...a, [key]: isNumber ? parseInt(results) : results };
+    return updatedObj as T;
   });
 };
 
