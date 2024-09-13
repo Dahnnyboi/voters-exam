@@ -78,7 +78,7 @@ const LandingFilter = (props: LandingFilterProps) => {
         <Select
           options={createSelectOptions(region ? REGIONS_PROVINCES[region] : {})}
           onChange={(value) => {
-            onChangeFilter('province', value, ['muncipality']);
+            onChangeFilter('province', value, ['municipality']);
           }}
           placeholder="Select Provinces"
           defaultValue={province}
